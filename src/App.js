@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {TimelyProvider, isNight, timelyTrigger} from './Timely';
+import Weather from './Weather';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      context: isNight() ? 'night' : 'day',
+    };
+    this.triggerChange = this.triggerChange.bind(this);
+  }
+
+  componentWillMount() {
+    const time = timelyTrigger();
+    setTimeout(function(){this.triggerChange()}, time);
+  }
+
+  triggerChange() {
+    const currentContext = this.state.context;
+    const context = currentContext === 'day' ? 'night' : 'day';
+    this.setState({context: context});
+  }
+
+  render() {
+    const {context} = this.state;
+    return (
+      <div className="App">
+        <TimelyProvider value={context}>
+          <Weather />
+        </TimelyProvider>
+      </div>
+    )
+  }
 }
-
-export default App;
