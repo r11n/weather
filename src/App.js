@@ -14,7 +14,8 @@ export default class App extends React.Component {
 
   componentWillMount() {
     const time = timelyTrigger();
-    setTimeout(function(){this.triggerChange()}, time);
+    const change = this.triggerChange
+    if(time){setTimeout(function(){change()}, time)};
   }
 
   triggerChange() {

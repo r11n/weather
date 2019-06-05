@@ -10,7 +10,10 @@ export function isNight() {
 export function timelyTrigger() {
     const now = new Date()
     const nTime = new Date();
-    const nightTime = new Date(nTime.setHours(18))
+    nTime.setMinutes(0, 0, 0);
+    console.log(now)
+    const nightTime = new Date(nTime.setHours(18));
+    console.log(nightTime)
     const dayTime = new Date(nTime.setHours(6));
     const diff = nightTime - now;
     const mdiff = dayTime - now;
@@ -18,5 +21,7 @@ export function timelyTrigger() {
         return diff;
     } else if (mdiff > 0) {
         return mdiff;
+    } else {
+        return false;
     }
 }

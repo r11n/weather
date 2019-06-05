@@ -134,10 +134,11 @@ const TableData = styled.table`
 
 class Weather extends Component {
     req = new Request();
+    // hyderabad: 1269843
     constructor(props) {
         super(props);
         this.state = {
-            cityId: 1269843,
+            cityId: 1258932,
             weather: {},
             name: 'Hyderabad',
             main: {},
