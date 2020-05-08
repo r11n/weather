@@ -5,7 +5,7 @@ export const Timely = TimelyContext.Consumer;
 export function isNight() {
     const now = new Date();
     const hours = now.getHours();
-    return hours >= 18 || hours < 6 ;
+    return (hours >= 18 || hours < 6) ;
 }
 export function timelyTrigger() {
     const now = new Date()

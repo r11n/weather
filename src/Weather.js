@@ -47,7 +47,7 @@ const Temperature = styled.h1`
     float: right;
     color: ${props => props.context==='day' ? "#666" : "#999"};;
     font-weight: 300;
-    font-size: 6.59375em;
+    font-size: 4.5rem;
     line-height: .2em;
     animation: ${up} 2s cubic-bezier(.39, 0, .38, 1) .2s;
 `;
